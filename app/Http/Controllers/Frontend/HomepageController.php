@@ -350,10 +350,21 @@ class HomepageController extends Controller
         $couserId = $query->pluck('id');
         $usersID = DB::table('courseuser_user')->whereIn('courseuser_id',$couserId)->pluck('user_id')->unique();
         $users = User::whereIn('id', $usersID)->get();
+
+
+
         
 
         return view('frontend.pages.user-course.user-course-info', compact('user_course_categories', 'user_course','student_course'));
+
     }
+    // Students Course Details Page
+    public function studentCourseDetails(){
+        return view('frontend.pages.user-course.user-course-details');
+    }
+
+
+
 
     public function studentCourseCategory($id)
     {

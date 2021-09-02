@@ -58,20 +58,14 @@ Route::group(['namespace' => 'Frontend'], function () {
     Route::get('user-course-category/{id}', 'HomepageController@userCourseCategory');
     Route::post('selected-user-course-store', 'HomepageController@selectedUserCourseStore')->name('selected.user.course.store');
     Route::get('student-course-category/{id}', 'HomepageController@studentCourseCategory');
+    Route::get('student-course-details', 'HomepageController@studentCourseDetails');
     // Route::get('student-list/{id}', 'HomepageController@studentList');
-
-    
 
     // Test Course 
     Route::get('show-students', 'HomepageController@showStudents');
 
-
-
-
     // Mashtor Alumni
     Route::get('mashtor-alumni', 'HomepageController@showMashtor');
-
-
 
 
     Route::get('teacher/find-tutor', 'Teacher\TeacherController@findTutor');
