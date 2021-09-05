@@ -61,6 +61,8 @@ Route::group(['namespace' => 'Frontend'], function () {
     Route::get('student-course-details', 'HomepageController@studentCourseDetails');
     // Route::get('student-list/{id}', 'HomepageController@studentList');
 
+
+
     // Test Course 
     Route::get('show-students', 'HomepageController@showStudents');
 

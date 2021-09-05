@@ -30,6 +30,46 @@
   .course-logo img{
     border-radius: 50%;
   }
+  .graduation-badge{
+    width: 150px;
+    height: 150px;
+    border: 2px solid black;
+    border-radius: 50%;
+    font-size: 45px;
+    text-align: center;
+    padding: 10px;
+    margin: 50px 0px;
+  }
+  .certificate{
+    background-image: url('frontend/digital-skill-certificate/certificate.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 850px;
+    position: relative;
+  }
+  .badge{
+    position: absolute;
+    top: 160px;
+    right: 100px;
+    color: white;
+  }
+  .details{
+    position: absolute;
+    bottom: 272px;
+    left: 30%;
+    text-align: cenetr;
+    justify-content: center;
+  }
+  .details h2::after{
+    content: "";
+    display: block;
+    margin: auto;
+    width: 288px;
+    height: 2px;
+    background: black;
+    margin-top: 2px;
+  }
 </style>
 @endsection
 @section('frontend-content')
@@ -83,9 +123,30 @@
       </div>
 
       <!-- Certificate -->
-      <div class="row">
-        .
-      </div>
+      <section class="mt-5">
+        <div class="text-center m-auto my-3">
+          <span class="graduation-badge"><i class="fas fa-graduation-cap"></i></span>
+        </div>
+
+        <div class="certificate mt-5">
+          <div class="badge">
+            <p>Digital Skill For all <br> 2021</p>
+          </div>
+
+          <div class="details text-center">
+            <h4>THIS CERTIFICATE IS PRESENTED TO</h4>
+            <h2 class="pt-3">Sankari Sindhu</h2>
+            <p class="pt-3">For participating in the</p>
+            <p class="py-2">"UNDP WOMENS DIGITAL INNOVATION HACKATHON <small>2021</small>"</p>
+            <p>and demonstrating fabulous innovative skill and teamwork</p>
+          </div>
+          
+        </div>
+
+        
+
+      </section>
+      
       <!-- Certificate End-->
 
       

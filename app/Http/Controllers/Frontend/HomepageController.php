@@ -433,4 +433,6 @@ class HomepageController extends Controller
         return view('frontend.pages.mashtor-alumini', $data);
     }
 
+
+
 }
