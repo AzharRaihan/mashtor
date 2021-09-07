@@ -40,7 +40,7 @@
     padding: 10px;
     margin: 50px 0px;
   }
-  .certificate{
+  /* .certificate{
     background-image: url('frontend/digital-skill-certificate/certificate.png');
     background-size: cover;
     background-position: center;
@@ -69,12 +69,109 @@
     height: 2px;
     background: black;
     margin-top: 2px;
+  } */
+
+  .badge1{
+    width: 250px;
+    height: 200px;
+    background: #ffd4f2;
+    border-bottom-right-radius: 75%;
+    border-bottom-left-radius: 5%;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
   }
+  .mashtor-logo1{
+    padding-top: 70px;
+    margin-left: 100px;
+  }
+  .mashtor-logo1 img{
+    width: 60px;
+    height: 60px;
+  }
+  .badge2{
+    width: 300px;
+    height: 400px;
+    background: #ffd4f2;
+    border-bottom-right-radius: 250px;
+    border-bottom-left-radius: 250px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    padding-bottom: 30px;
+    position: relative;
+
+  }
+  .badge2-circle{
+    position: absolute;
+    border: 3px solid #C2000C;
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+  }
+  .verified-badge{
+    position: absolute;
+    top: 30px;
+    text-align: center;
+  }
+  .name-com-date{
+    padding-left: 50px;
+    padding-top: 50px;
+  }
+  .certificate-bg{
+    background: #F7F2F7;
+    padding: 60px 0px;
+  }
+  .course-logo-wrap{
+    width: 300px;
+  }
+  .course-logo-wrap{
+    padding-left: 50px;
+  }
+  .founder-signature{
+    padding-left: 50px;
+    padding-top: 64px;
+  }
+  .founder-signature h5::before{
+    content: "";
+    display: block;
+    width: 250px;
+    height: 1px;
+    background: #030303;
+    margin-bottom: 6px;
+    top: 3;
+  }
+  .trainer-signature{
+    padding-top: 227px;
+  }
+  .trainer-signature h5::before{
+    content: "";
+    display: block;
+    width: 250px;
+    height: 1px;
+    background: #030303;
+    margin-bottom: 6px;
+    top: 3;
+  }
+  #border-certificate{
+    border: 10px solid transparent;
+    padding: 15px;
+    border-image-source: url('frontend/digital-skill-certificate/binary-number.jpg');
+    border-image-repeat: round;
+    border-image-slice: 30;
+    border-image-width: 10px;
+  }
+  
 </style>
 @endsection
 @section('frontend-content')
   <!-- Students -->
-  <section class="pt-5">
+  <section class="py-5">
     <div class="container">
       <div class="row">
         <div class="col-sm-3">
@@ -123,7 +220,7 @@
       </div>
 
       <!-- Certificate -->
-      <section class="mt-5">
+      {{-- <section class="mt-5">
         <div class="text-center m-auto my-3">
           <span class="graduation-badge"><i class="fas fa-graduation-cap"></i></span>
         </div>
@@ -145,15 +242,108 @@
 
         
 
-      </section>
-      
+      </section> --}}
+
+
       <!-- Certificate End-->
 
       
     </div>
   </section>
   <!-- Students End -->
+
+  <!-- Certificate -->
+  <section class="certificate-bg">
+    <div class="container" id="border-certificate">
+      <div class="d-flex justify-content-between">
+        <div>
+          <div class="badge1">
+            <div class="mashtor-logo1 d-flex">
+              <img src="{{ url('frontend/digital-skill-certificate/m-logo.png') }}" alt="">
+              <h2 class="pt-2 pl-3" style="color: #C2000C;">Mashtor</h2>
+            </div>
+          </div>
+          <div class="name-com-date">
+            <span>September 6,020</span>
+            <h4 class="py-3">Sankari Sindhu</h4>
+            <span>Has Successfully compleated a Mashtor workshop</span>
+            <h4 class="py-3" style="color: #C2000C">Introducting To Codding</h4>
+          </div>
+          <!-- Set up your HTML -->
+          <div class="owl-carousel course-logo-wrap pt-3">
+            <div class="course-logo"> 
+              <img src="{{ url('uploads/course/html.png') }}" alt="" class="img-fluid">
+            </div>
+            <div class="course-logo"> 
+              <img src="{{ url('uploads/course/css.png') }}" alt="" class="img-fluid">
+            </div>
+            <div class="course-logo"> 
+              <img src="{{ url('uploads/course/bootstrap.png') }}" alt="" class="img-fluid">
+            </div>
+            <div class="course-logo"> 
+              <img src="{{ url('uploads/course/vscode.png') }}" alt="" class="img-fluid">
+            </div>
+            <div class="course-logo"> 
+              <img src="{{ url('uploads/course/html.png') }}" alt="" class="img-fluid">
+            </div>
+            <div class="course-logo"> 
+              <img src="{{ url('uploads/course/css.png') }}" alt="" class="img-fluid">
+            </div>
+            <div class="course-logo"> 
+              <img src="{{ url('uploads/course/bootstrap.png') }}" alt="" class="img-fluid">
+            </div>
+
+          </div>
+          <div class="founder-signature">
+            <img src="{{ url('frontend/digital-skill-certificate/founder-signature.png') }}" alt="" class="img-fluid">
+            <h5>Founder Signature</h5>
+          </div>
+
+
+        </div>
+        <div>
+          <div class="badge2">
+            <div class="badge2-circle m-auto p-3">
+              <img src="{{ url('frontend/digital-skill-certificate/w-logo.png') }}" alt="" class="img-fluid">
+            </div>
+            <div class="verified-badge">
+              <h5 class="text-uppercase">Verified</h5>
+              <p>Certificate of Archivement</p>
+            </div>
+            
+          </div>
+          <div class="trainer-signature">
+            <h5>Trainer Signature</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Certificate End-->
+
 @endsection
 @section('frontend-scripts')
+<script>
+  $('.owl-carousel').owlCarousel({
+    loop:true,
+    margin:10,
+    responsiveClass:true,
+    responsive:{
+        0:{
+            items:1,
+            nav:true
+        },
+        600:{
+            items:3,
+            nav:false
+        },
+        1000:{
+            items:5,
+            nav:false,
+            loop:false
+        }
+    }
+})
+</script>
 
 @endsection
