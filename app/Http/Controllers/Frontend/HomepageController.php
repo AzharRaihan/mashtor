@@ -343,7 +343,6 @@ class HomepageController extends Controller
     {
         $user_course_categories = UserCourseCategory::findOrFail($id);
         $user_course = Courseuser::where('user_course_category_id', $id)->get();
-        // $user_selected_course = Courseuser::with('users')->get();
         $query = Courseuser::with('courseusers')->where('user_course_category_id', $id);
         $student_course = $query->latest()->get();
         $couserId = $query->pluck('id');
@@ -352,8 +351,21 @@ class HomepageController extends Controller
         return view('frontend.pages.user-course.user-course-info', compact('user_course_categories', 'user_course','student_course'));
     }
     // Students Course Details Page
-    public function studentCourseDetails(){
-        return view('frontend.pages.user-course.user-course-details');
+    public function studentCourseDetails($id){
+
+        $user = User::findOrFail($id);
+
+        // $user_course_categories = UserCourseCategory::findOrFail($id);
+        // $user_course = Courseuser::where('user_course_category_id', $id)->get();
+        // $query = Courseuser::with('courseusers')->where('user_course_category_id', $id);
+        // $student_course = $query->latest()->get();
+        // $couserId = $query->pluck('id');
+        // $usersID = DB::table('courseuser_user')->whereIn('courseuser_id',$couserId)->pluck('user_id')->unique();
+        // $users = User::whereIn('id', $usersID)->latest('id')->get();
+        // return view('frontend.pages.user-course.user-course-details', compact('user_course_categories', 'user_course','student_course'));
+
+        return view('frontend.pages.user-course.user-course-details', compact('user'));
+    
     }
 
 

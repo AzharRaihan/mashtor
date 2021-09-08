@@ -320,11 +320,13 @@
       <div class="container">
         <h1 class="text-center pt-3 pb-4">Students</h1>
         <div class="row">
+          @foreach ($student_course as $course)
+          @foreach ($course->courseusers as $item)
           <div class="col-lg-3 col-md-6 col-sm-6 col-12 load-col">
             <div class="card tutor-card">
-              <img src="{{ url('uploads/default.png') }}" alt="" class="img-fluid">
+              <img src="{{ url($item->image) }}" alt="" class="img-fluid">
               <div class="des tutor-des">
-                <h5 class="pb-2 text-capitalize">Farial jannat mahi</h5>
+                <h5 class="pb-2 text-uppercase">{{ $item->fullname }}</h5>
                 <div class="d-flex pt-2">
                   <i class="fas fa-star text-warning"></i>
                   <i class="fas fa-star text-warning"></i>
@@ -338,31 +340,7 @@
                   <span>-High Recommended</span>
                 </div>
                 {{-- <p>Graduated 1 Day Ago</p> --}}
-                <a href="#" class="text-info">Read More</a>
-              </div>
-            </div>
-          </div>
-          @foreach ($student_course as $course)
-          @foreach ($course->courseusers as $item)
-          <div class="col-lg-3 col-md-6 col-sm-6 col-12 load-col">
-            <div class="card tutor-card">
-              <img src="{{ url($item->image) }}" alt="" class="img-fluid">
-              <div class="des tutor-des">
-                <h5 class="pb-2 text-capitalize">{{ $item->fullname }}</h5>
-                {{-- <div class="d-flex pt-2">
-                  <i class="fas fa-star text-warning"></i>
-                  <i class="fas fa-star text-warning"></i>
-                  <i class="fas fa-star text-warning"></i>
-                  <i class="fas fa-star text-warning"></i>
-                </div> --}}
-                <div class="d-flex pt-2 rating">
-                  <span>5</span>
-                  <span>/</span>
-                  <span>5</span>
-                  <span>-High Recommended</span>
-                </div>
-                {{-- <p>Graduated 1 Day Ago</p> --}}
-                <a href="#" class="text-info">Read More</a>
+                <a href="{{ route('students.course.details', $item->id) }}" class="text-info">Read More</a>
               </div>
             </div>
           </div>
