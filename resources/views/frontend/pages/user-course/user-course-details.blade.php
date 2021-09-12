@@ -134,9 +134,12 @@
     top: 3;
   }
   #border-certificate{
-    max-width: 860px;
+    width: 860px;
     border: 10px solid transparent;
     border-image-source: url('../frontend/digital-skill-certificate/border.png');
+    background-image: url('../frontend/digital-skill-certificate/certificate-bg.png');
+    background-repeat: no-repeat;
+    background-size:cover;
     border-image-repeat: 20% round;
     border-image-slice: 30%;
     margin: auto;
