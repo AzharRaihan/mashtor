@@ -95,7 +95,8 @@
     padding-top: 50px;
   }
   .certificate-bg{
-    background: #F7F2F7;
+    background: #f0f0f0
+;
     padding: 60px 0px;
   }
   .course-logo-wrap{
@@ -137,13 +138,18 @@
     width: 860px;
     border: 10px solid transparent;
     border-image-source: url('../frontend/digital-skill-certificate/border.png');
-    background-image: url('../frontend/digital-skill-certificate/certificate-bg.png');
-    background-repeat: no-repeat;
-    background-size:cover;
     border-image-repeat: 20% round;
     border-image-slice: 30%;
     margin: auto;
     padding-bottom: 30px;
+    position: relative;
+  }
+  .op{
+    background-image: url('../frontend/digital-skill-certificate/certificate-bg-f.png');
+    background-repeat: no-repeat;
+    background-size:cover;
+    width: 100%;
+    height: 100%;
   }
   .name{
     letter-spacing: 2px;
@@ -287,6 +293,7 @@
     .verified-badge h5,p{
       font-size: 12px;
     }
+
   }
 </style>
 @endsection
@@ -346,62 +353,66 @@
   <!-- Certificate -->
   <section class="certificate-bg">
     <div class="container">
-      <div id="border-certificate" >
-        <div class="d-flex justify-content-between">
-          <div class="badge-1-wrap">
-            <div class="badge1">
-              <div class="mashtor-logo1 d-flex">
-                <img src="{{ url('frontend/digital-skill-certificate/m-logo.png') }}" alt="">
-                <h2 class="pt-2 pl-3" style="color: #C2000C;">Mashtor</h2>
+      <div class="opacity">
+        <div id="border-certificate" >
+          <div class="op">
+            <div class="d-flex justify-content-between">
+              <div class="badge-1-wrap">
+                <div class="badge1">
+                  <div class="mashtor-logo1 d-flex">
+                    <img src="{{ url('frontend/digital-skill-certificate/m-logo.png') }}" alt="">
+                    <h2 class="pt-2 pl-3" style="color: #C2000C;">Mashtor</h2>
+                  </div>
+                </div>
+                <div class="name-com-date">
+                  <span>September 6,2021</span>
+                  <h4 class="py-md-3 py-1 text-uppercase name">{{ $user->fullname }}</h4>
+                  <span>Has Successfully compleated a Mashtor workshop</span>
+                  <h4 class="py-md-3 py-1" style="color: #C2000C">Introducting To Codding</h4>
+                </div>
+                <!-- Set up your HTML -->
+                <div class="owl-carousel course-logo-wrap pt-3">
+                  <div class="course-logo"> 
+                    <img src="{{ url('uploads/course/html.png') }}" alt="" class="img-fluid">
+                  </div>
+                  <div class="course-logo"> 
+                    <img src="{{ url('uploads/course/css.png') }}" alt="" class="img-fluid">
+                  </div>
+                  <div class="course-logo"> 
+                    <img src="{{ url('uploads/course/bootstrap.png') }}" alt="" class="img-fluid">
+                  </div>
+                  <div class="course-logo"> 
+                    <img src="{{ url('uploads/course/vscode.png') }}" alt="" class="img-fluid">
+                  </div>
+                  <div class="course-logo"> 
+                    <img src="{{ url('uploads/course/html.png') }}" alt="" class="img-fluid">
+                  </div>
+                  <div class="course-logo"> 
+                    <img src="{{ url('uploads/course/css.png') }}" alt="" class="img-fluid">
+                  </div>
+                  <div class="course-logo"> 
+                    <img src="{{ url('uploads/course/bootstrap.png') }}" alt="" class="img-fluid">
+                  </div>
+                </div>
+                <div class="founder-signature">
+                  <img src="{{ url('frontend/digital-skill-certificate/founder-signature.png') }}" alt="" class="img-fluid">
+                  <h5>Founder Signature</h5>
+                </div>
               </div>
-            </div>
-            <div class="name-com-date">
-              <span>September 6,2021</span>
-              <h4 class="py-md-3 py-1 text-uppercase name">{{ $user->fullname }}</h4>
-              <span>Has Successfully compleated a Mashtor workshop</span>
-              <h4 class="py-md-3 py-1" style="color: #C2000C">Introducting To Codding</h4>
-            </div>
-            <!-- Set up your HTML -->
-            <div class="owl-carousel course-logo-wrap pt-3">
-              <div class="course-logo"> 
-                <img src="{{ url('uploads/course/html.png') }}" alt="" class="img-fluid">
+              <div class="badge-2-wrap">
+                <div class="badge2">
+                  <div class="badge2-circle m-auto p-3">
+                    <img src="{{ url('frontend/digital-skill-certificate/w-logo.png') }}" alt="" class="img-fluid">
+                  </div>
+                  <div class="verified-badge">
+                    <h5 class="text-uppercase">Verified</h5>
+                    <p>Certificate of Archivement</p>
+                  </div>
+                </div>
+                <div class="trainer-signature">
+                  <h5>Trainer Signature</h5>
+                </div>
               </div>
-              <div class="course-logo"> 
-                <img src="{{ url('uploads/course/css.png') }}" alt="" class="img-fluid">
-              </div>
-              <div class="course-logo"> 
-                <img src="{{ url('uploads/course/bootstrap.png') }}" alt="" class="img-fluid">
-              </div>
-              <div class="course-logo"> 
-                <img src="{{ url('uploads/course/vscode.png') }}" alt="" class="img-fluid">
-              </div>
-              <div class="course-logo"> 
-                <img src="{{ url('uploads/course/html.png') }}" alt="" class="img-fluid">
-              </div>
-              <div class="course-logo"> 
-                <img src="{{ url('uploads/course/css.png') }}" alt="" class="img-fluid">
-              </div>
-              <div class="course-logo"> 
-                <img src="{{ url('uploads/course/bootstrap.png') }}" alt="" class="img-fluid">
-              </div>
-            </div>
-            <div class="founder-signature">
-              <img src="{{ url('frontend/digital-skill-certificate/founder-signature.png') }}" alt="" class="img-fluid">
-              <h5>Founder Signature</h5>
-            </div>
-          </div>
-          <div class="badge-2-wrap">
-            <div class="badge2">
-              <div class="badge2-circle m-auto p-3">
-                <img src="{{ url('frontend/digital-skill-certificate/w-logo.png') }}" alt="" class="img-fluid">
-              </div>
-              <div class="verified-badge">
-                <h5 class="text-uppercase">Verified</h5>
-                <p>Certificate of Archivement</p>
-              </div>
-            </div>
-            <div class="trainer-signature">
-              <h5>Trainer Signature</h5>
             </div>
           </div>
         </div>
