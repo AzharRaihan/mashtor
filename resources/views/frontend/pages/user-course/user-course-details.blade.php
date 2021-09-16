@@ -137,9 +137,9 @@
   #border-certificate{
     width: 860px;
     border: 10px solid transparent;
-    border-image-source: url('../frontend/digital-skill-certificate/border.png');
+    /* border-image-source: url('../frontend/digital-skill-certificate/border.png');
     border-image-repeat: 20% round;
-    border-image-slice: 30%;
+    border-image-slice: 30%; */
     margin: auto;
     padding-bottom: 30px;
     position: relative;
@@ -150,6 +150,15 @@
     background-size:cover;
     width: 100%;
     height: 100%;
+    border-top: 3px solid #C2000C; 
+    border-bottom: 3px solid #C2000C; 
+    border-right: 3px solid #FFB317; 
+    border-left: 3px solid #FFB317; 
+    border-radius: 5px;
+    padding-bottom: 30px;
+  }
+  #op2{
+    padding: 15px
   }
   .name{
     letter-spacing: 2px;
@@ -294,8 +303,10 @@
       font-size: 12px;
     }
 
+
   }
 </style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.3.2/html2canvas.min.js" integrity="sha512-tVYBzEItJit9HXaWTPo8vveXlkK62LbA+wez9IgzjTmFNLMBO1BEYladBw2wnM3YURZSMUyhayPCoLtjGh84NQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 @endsection
 @section('frontend-content')
   <!-- Students -->
@@ -353,9 +364,10 @@
   <!-- Certificate -->
   <section class="certificate-bg">
     <div class="container">
-      <div class="opacity">
+      <div id="capture">
         <div id="border-certificate" >
-          <div class="op">
+          <div id="op2">
+          <div class="op" id="op">
             <div class="d-flex justify-content-between">
               <div class="badge-1-wrap">
                 <div class="badge1">
@@ -416,7 +428,10 @@
             </div>
           </div>
         </div>
+          <button onclick="saveAs()" class="btn btn-warning text-white mt-5">Save As</button>
+        </div>
       </div>
+
     </div>
   </section>
   <!-- Certificate End-->
@@ -443,5 +458,12 @@
         }
     }
 })
+</script>
+<script>
+  function saveAs(){
+      html2canvas(document.querySelector("#op2")).then(canvas => {
+          document.body.appendChild(canvas)
+      });
+  }
 </script>
 @endsection
