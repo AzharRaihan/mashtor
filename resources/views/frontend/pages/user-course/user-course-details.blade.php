@@ -2,6 +2,9 @@
 @section('title',' | Course Details ')
 @section('frontend-styles')
 <style>
+  .form-control:focus{
+    box-shadow: none;
+  }
   .student-avater img{
     border-top-right-radius: 50%;
     border-bottom-right-radius: 50%;
@@ -95,8 +98,7 @@
     padding-top: 50px;
   }
   .certificate-bg{
-    background: #f0f0f0
-;
+    background: #f0f0f0;
     padding: 60px 0px;
   }
   .course-logo-wrap{
@@ -302,6 +304,17 @@
     .verified-badge h5,p{
       font-size: 12px;
     }
+    .form-control:focus {
+      box-shadow: none !important;
+    }
+    #bio .form-control:focus {
+    color: #495057;
+    background-color: #fff;
+    border-color: #80bdff;
+    outline: 0;
+    box-shadow: none;
+  }
+    
 
 
   }
@@ -329,7 +342,16 @@
             <span><i class="fas fa-star"></i></span>
           </div>
           <p>5/5 - Highly Recommended</p>
-          <p>" Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla ratione impedit accusantium et ipsa assumenda, veritatis provident iusto quaerat porro eaque quisquam molestiae repellat qui eos tenetur odit, incidunt accusamus atque. Omnis nesciunt accusantium atque minima ad autem corporis vero eos magnam commodi, fugit consequuntur modi, molestias iure cumque distinctio!"</p>
+          @if($user == $authUser)
+          <form action="{{ route('update.bio', $user->id) }}" method="POST" id="bio">
+            @csrf
+            <textarea name="bio" class="form-control" style="width: 100%;" rows="4">{{ $user->bio }}</textarea>
+            <small class="d-block">Max Character 255</small>
+            <button type="submit" class="btn btn-warning text-white btn-sm">Update Bio <i class="far fa-arrow-alt-circle-up"></i></button>
+          </form>
+          @else
+          <p>{{ $user->bio }}</p>
+          @endif
           <div class="d-flex mt-4">
             <a href="#" class="verified">
               Verified Certificate

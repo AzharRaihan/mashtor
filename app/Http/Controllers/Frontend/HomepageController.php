@@ -15,6 +15,7 @@ use App\Rules\CheckDiscountCode;
 use App\User;
 use Auth;
 use DB;
+use Illuminate\Foundation\Console\Presets\React;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Mail;
@@ -354,6 +355,8 @@ class HomepageController extends Controller
     public function studentCourseDetails($id){
 
         $user = User::findOrFail($id);
+        $authUser = Auth::user();
+        
 
         // $user_course_categories = UserCourseCategory::findOrFail($id);
         // $user_course = Courseuser::where('user_course_category_id', $id)->get();
@@ -364,8 +367,20 @@ class HomepageController extends Controller
         // $users = User::whereIn('id', $usersID)->latest('id')->get();
         // return view('frontend.pages.user-course.user-course-details', compact('user_course_categories', 'user_course','student_course'));
 
-        return view('frontend.pages.user-course.user-course-details', compact('user'));
+        return view('frontend.pages.user-course.user-course-details', compact('user', 'authUser'));
     
+    }
+    public function updateBio(Request $request, $id){
+
+        $user = User::findOrFail($id);
+        $auth = Auth::user();
+        if($user == $auth){
+            $user->bio = $request->bio;
+            $user->save();
+            return redirect()->back();
+        }else{
+            return "You're not Authenticated Users";
+        }
     }
 
 
