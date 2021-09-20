@@ -315,9 +315,6 @@ class HomepageController extends Controller
     {
         $data = [];
         $q = Input::get('q');
-        //echo $q;
-        // $data['course'] = DB::connection('mysql2')->table('courses')
-
         $data['courses_d2'] = DB::connection('mysql2')->table('courses')
             ->where('course_title', 'LIKE', '%' . $q . '%')
             ->orWhere('course_fee', 'LIKE', '%' . $q . '%')
@@ -327,7 +324,6 @@ class HomepageController extends Controller
         } else {
             return view('frontend.pages.searchnotfound');
         }
-
     }
 
     public function msg(Request $request)
@@ -348,29 +344,16 @@ class HomepageController extends Controller
         $query = Courseuser::with('courseusers')->where('user_course_category_id', $id);
         $student_course = $query->latest()->get();
         $couserId = $query->pluck('id');
-        $usersID = DB::table('courseuser_user')->whereIn('courseuser_id',$couserId)->pluck('user_id')->unique();
-        $users = User::whereIn('id', $usersID)->latest('id')->get();
-        return view('frontend.pages.user-course.user-course-info', compact('user_course_categories', 'user_course','student_course'));
+        $usersID = DB::table('courseuser_user')->whereIn('courseuser_id',$couserId)->where('status', 0)->pluck('user_id')->unique();
+        $users = User::whereIn('id', $usersID)->get();
+        return view('frontend.pages.user-course.user-course-info', compact('user_course_categories', 'user_course','users'));
     }
 
     // Students Course Details Page
-    public function studentCourseDetails($id){
-
-        $user = User::findOrFail($id);
+    public function studentCourseDetails($id)
+    {
+        $user = User::with('course')->findOrFail($id);
         $authUser = Auth::user();
-        
-        // Extra
- 
-        // $user_course = Courseuser::where('user_course_category_id', $id)->get();
-        // $query = Courseuser::with('courseusers')->where('user_course_category_id', $id);
-        // $student_course = $query->latest()->get();
-        // $couserId = $query->pluck('id');
-        // $usersID = DB::table('courseuser_user')->whereIn('user_id',$user);
-        // $users = User::whereIn('id', $usersID)->get();
-
-        // End
-
-
         return view('frontend.pages.user-course.user-course-details', compact('user', 'authUser'));
     }
 
@@ -387,7 +370,6 @@ class HomepageController extends Controller
             return "You're not Authenticated Users";
         }
     }
-
 
 
     // A 

@@ -14,7 +14,6 @@ class Courseuser extends Model
     {
         return $this->belongsTo(UserCourseCategory::class);
     }
-
     public function users()
     {
         return $this->belongsToMany(User::class, 'courseuser_user', 'courseuser_id', 'user_id');

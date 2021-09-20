@@ -308,15 +308,12 @@
       box-shadow: none !important;
     }
     #bio .form-control:focus {
-    color: #495057;
-    background-color: #fff;
-    border-color: #80bdff;
-    outline: 0;
-    box-shadow: none;
-  }
-    
-
-
+      color: #495057;
+      background-color: #fff;
+      border-color: #80bdff;
+      outline: 0;
+      box-shadow: none;
+    }
   }
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.3.2/html2canvas.min.js" integrity="sha512-tVYBzEItJit9HXaWTPo8vveXlkK62LbA+wez9IgzjTmFNLMBO1BEYladBw2wnM3YURZSMUyhayPCoLtjGh84NQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -342,6 +339,10 @@
             <span><i class="fas fa-star"></i></span>
           </div>
           <p>5/5 - Highly Recommended</p>
+          @foreach($user->course as $course)
+            <p>{{ $course->user_course_name }}</p>
+          @endforeach
+          
           @if($user == $authUser)
           <form action="{{ route('update.bio', $user->id) }}" method="POST" id="bio">
             @csrf
