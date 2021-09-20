@@ -279,7 +279,7 @@ class HomepageController extends Controller
     {
         $data = [];
         $q = Input::get('q');
-//echo $q;
+        //echo $q;
         $tutors = User::where('fullname', 'LIKE', '%' . $q . '%')
             ->select('users.id as user_id', 'users.fullname', 'users.image', 'users.become_a_tutor', 'user_details.id as user_details_id', 'user_details.profile_tag', 'user_details.price')
             ->join('user_details', 'user_details.user_id', '=', 'users.id')
@@ -340,6 +340,7 @@ class HomepageController extends Controller
         return redirect('livechat-student');
     }
 
+    // Users Course Info
     public function userCourseCategory($id)
     {
         $user_course_categories = UserCourseCategory::findOrFail($id);
@@ -351,27 +352,31 @@ class HomepageController extends Controller
         $users = User::whereIn('id', $usersID)->latest('id')->get();
         return view('frontend.pages.user-course.user-course-info', compact('user_course_categories', 'user_course','student_course'));
     }
+
     // Students Course Details Page
     public function studentCourseDetails($id){
 
         $user = User::findOrFail($id);
         $authUser = Auth::user();
         
-
-        // $user_course_categories = UserCourseCategory::findOrFail($id);
+        // Extra
+ 
         // $user_course = Courseuser::where('user_course_category_id', $id)->get();
         // $query = Courseuser::with('courseusers')->where('user_course_category_id', $id);
         // $student_course = $query->latest()->get();
         // $couserId = $query->pluck('id');
-        // $usersID = DB::table('courseuser_user')->whereIn('courseuser_id',$couserId)->pluck('user_id')->unique();
-        // $users = User::whereIn('id', $usersID)->latest('id')->get();
-        // return view('frontend.pages.user-course.user-course-details', compact('user_course_categories', 'user_course','student_course'));
+        // $usersID = DB::table('courseuser_user')->whereIn('user_id',$user);
+        // $users = User::whereIn('id', $usersID)->get();
+
+        // End
+
 
         return view('frontend.pages.user-course.user-course-details', compact('user', 'authUser'));
-    
     }
-    public function updateBio(Request $request, $id){
 
+    // Update User Bio
+    public function updateBio(Request $request, $id)
+    { 
         $user = User::findOrFail($id);
         $auth = Auth::user();
         if($user == $auth){
@@ -385,47 +390,28 @@ class HomepageController extends Controller
 
 
 
-
+    // A 
     public function studentCourseCategory($id)
     {
         $student_course_categories = UserCourseCategory::findOrFail($id);
-
         // xtart
         $query = Courseuser::with('courseusers')->where('user_course_category_id', $id);
-
         $student_course = $query->get();
-
         $couserId = $query->pluck('id');
-
         $usersID = DB::table('courseuser_user')->whereIn('courseuser_id',$couserId)->pluck('user_id')->unique();
-
         $users = User::whereIn('id', $usersID)->get();
-
         // end
-
-        // $usersId = array_unique($usersID);
-
-
-
-        dd($users);
+        dd($usersID);
         return view('frontend.pages.student-course.student-course', compact('student_course_categories', 'student_course'));
     }
-    // public function studentList($id)
-    // {
-    //     $student = DB::table('courseuser_user')->get();
-
-    //     return view('frontend.pages.student-course.student-list', compact('student'));
-    // }
-
-
-
+    
+    // Selected User Course Store
     public function selectedUserCourseStore(Request $request)
     {
         $this->validate($request, [
             'courseuser_id' => 'required',
             'user_id' => 'required',
         ]);
-
         $data = DB::table('courseuser_user')->insert([
             'courseuser_id' => $request->courseuser_id,
             'user_id' => $request->user_id,
@@ -433,21 +419,8 @@ class HomepageController extends Controller
         return redirect()->route('user.course.info');
     }
 
-    public function showStudents(){
-        $course = Courseuser::with('courseusers')->where('user_course_category_id', 2)->get();
-
-        dd($course);
-    }
-
-
     // Show Mashtor
     public function showMashtor(){
-        /*$data['tutors'] = DB::table('users')
-            ->select('users.id as user_id', 'users.fullname', 'users.image', 'users.status', 'users.become_a_tutor', 'user_details.id as user_details_id', 'user_details.profile_tag', 'user_details.price')
-            ->join('user_details', 'user_details.user_id', '=', 'users.id')
-            ->where('users.become_a_tutor', 1)
-            ->where('users.status', 1)
-            ->paginate(8);*/
         $data['students'] = DB::table('users')->latest()
         ->paginate(8);
         return view('frontend.pages.mashtor-alumini', $data);
