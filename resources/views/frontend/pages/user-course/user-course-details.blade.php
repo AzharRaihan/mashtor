@@ -57,7 +57,7 @@
   }
   .mashtor-logo1{
     padding-top: 70px;
-    margin-left: 100px;
+    margin-left: 25px;
   }
   .mashtor-logo1 img{
     width: 60px;
@@ -339,10 +339,6 @@
             <span><i class="fas fa-star"></i></span>
           </div>
           <p>5/5 - Highly Recommended</p>
-          @foreach($user->course as $course)
-            <p>{{ $course->user_course_name }}</p>
-          @endforeach
-          
           @if($user == $authUser)
           <form action="{{ route('update.bio', $user->id) }}" method="POST" id="bio">
             @csrf
@@ -402,8 +398,10 @@
                 <div class="name-com-date">
                   <span>September 6,2021</span>
                   <h4 class="py-md-3 py-1 text-uppercase name">{{ $user->fullname }}</h4>
-                  <span>Has Successfully compleated a Mashtor workshop</span>
-                  <h4 class="py-md-3 py-1" style="color: #C2000C">Introducting To Codding</h4>
+                  <span>Has successfully completed a certificate course</span>
+                  @foreach($user->course as $course)
+                    <h4 class="py-md-3 py-1" style="color: #C2000C">{{ $course->user_course_name }}</h4>
+                  @endforeach
                 </div>
                 <!-- Set up your HTML -->
                 <div class="owl-carousel course-logo-wrap pt-3">
@@ -451,7 +449,7 @@
             </div>
           </div>
         </div>
-          <button onclick="saveAs()" class="btn btn-warning text-white mt-5">Save As</button>
+          <!--<button onclick="saveAs()" class="btn btn-warning text-white mt-5">Save As</button>-->
         </div>
       </div>
 

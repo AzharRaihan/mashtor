@@ -14,6 +14,16 @@
   .del-btn{
     cursor: pointer;
   }
+
+  dl, ol, ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .imgPreview img {
+    padding: 8px;
+    max-width: 100px;
+  }
 </style>
 @endsection
 @section('page-content')
@@ -104,7 +114,7 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <form action="{{ url('admin/user-course-store') }}" method="POST">
+        <form action="{{ url('admin/user-course-store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="modal-body">
           <div class="form-group">
@@ -120,6 +130,18 @@
               <label for="course-name">User Course Name</label>
               <input type="text" class="form-control" id="category-name" name="user_course_name">
           </div>
+
+
+          <div class="form-group">
+            <div class="user-image text-center">
+              <div class="imgPreview"></div>
+            </div>
+            <div class="custom-file">
+              <label for="images">Choose Course Image</label>
+              <input type="file" name="course_image[]" class="form-control" id="images" multiple="multiple">
+            </div>
+          </div>
+
           <div class="form-group">
             <label for="class-link">Class Link</label>
             <input type="text" class="form-control" id="class-link" name="class_link">
@@ -172,6 +194,42 @@
     table.buttons().container().appendTo('#datatable-buttons_wrapper .col-md-6:eq(0)');
   });
 </script>
+
+
+<!-- Image Preview -->
+<script>
+  $(function() {
+  // Multiple images preview with JavaScript
+  var multiImgPreview = function(input, imgPreviewPlaceholder) {
+    if (input.files) {
+      var filesAmount = input.files.length;
+      for (i = 0; i < filesAmount; i++) {
+        var reader = new FileReader();
+        reader.onload = function(event) {
+        $($.parseHTML('<img>')).attr('src', event.target.result).appendTo(imgPreviewPlaceholder);
+      }
+      reader.readAsDataURL(input.files[i]);
+      }
+    }
+  };
+
+  $('#images').on('change', function() {
+      multiImgPreview(this, 'div.imgPreview');
+  });
+  });
+</script>
+<!-- Image Preview End -->
+
+
+
+
+
+
+
+
+
+
+
 <!-- Sweet Aleart Js -->
 <script src="https://unpkg.com/sweetalert2@7.19.1/dist/sweetalert2.all.js"></script>
 <script type="text/javascript">

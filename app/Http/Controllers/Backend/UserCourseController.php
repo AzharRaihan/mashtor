@@ -15,7 +15,7 @@ class UserCourseController extends Controller
         $user_course_category = UserCourseCategory::all();
         return view('backend.pages.user_course.index', compact('user_course', 'user_course_category'));
     }
-
+    // ["1632207595.figma.png","1632207595.ps.png","1632207595.canva.png","1632207595.Ai.png"]
     public function store(Request $request)
     {
         $this->validate($request, [
@@ -27,11 +27,22 @@ class UserCourseController extends Controller
             'class_link_2' => 'required',
             'start_time_2' => 'required',
             'day_2' => 'required',
+            'course_image' => 'required',
+            'course_image.*' => 'mimes:jpeg,jpg,png,gif,csv,txt,pdf|max:2048'
         ]);
-
+        if($request->hasfile('course_image')) {
+            foreach($request->file('course_image') as $file)
+            {
+                $extension = $file->getClientOriginalName();
+                $filename = time() . '.' . $extension;
+                $file->move('uploads/digital-skill-course-logo/', $filename);
+                $imgData[] = $filename;
+            }
+        }
         $user_course = new Courseuser();
         $user_course->user_course_name = $request->user_course_name;
         $user_course->user_course_category_id = $request->user_course_category_id;
+        $user_course->course_image = json_encode($imgData);
         $user_course->class_link = $request->class_link;
         $user_course->start_time = $request->start_time;
         $user_course->day = $request->day;
@@ -42,6 +53,8 @@ class UserCourseController extends Controller
         $this->setSuccess('Course Successfully Saved');
         return redirect('admin/user-course');
     }
+
+
 
     public function edit($id)
     {
@@ -62,7 +75,6 @@ class UserCourseController extends Controller
             'start_time_2' => 'required',
             'day_2' => 'required',
         ]);
-
         $user_course = Courseuser::findOrFail($id);
         $user_course->user_course_name = $request->user_course_name;
         $user_course->user_course_category_id = $request->user_course_category_id;
