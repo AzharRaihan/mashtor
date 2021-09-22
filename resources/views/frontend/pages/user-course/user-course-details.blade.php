@@ -405,27 +405,13 @@
                 </div>
                 <!-- Set up your HTML -->
                 <div class="owl-carousel course-logo-wrap pt-3">
-                  <div class="course-logo"> 
-                    <img src="{{ url('uploads/course/html.png') }}" alt="" class="img-fluid">
-                  </div>
-                  <div class="course-logo"> 
-                    <img src="{{ url('uploads/course/css.png') }}" alt="" class="img-fluid">
-                  </div>
-                  <div class="course-logo"> 
-                    <img src="{{ url('uploads/course/bootstrap.png') }}" alt="" class="img-fluid">
-                  </div>
-                  <div class="course-logo"> 
-                    <img src="{{ url('uploads/course/vscode.png') }}" alt="" class="img-fluid">
-                  </div>
-                  <div class="course-logo"> 
-                    <img src="{{ url('uploads/course/html.png') }}" alt="" class="img-fluid">
-                  </div>
-                  <div class="course-logo"> 
-                    <img src="{{ url('uploads/course/css.png') }}" alt="" class="img-fluid">
-                  </div>
-                  <div class="course-logo"> 
-                    <img src="{{ url('uploads/course/bootstrap.png') }}" alt="" class="img-fluid">
-                  </div>
+                  @foreach($user->course as $course)
+                    @foreach (json_decode($course->course_image) as $c_item)
+                    <div class="course-logo"> 
+                      <img src="{{ url('uploads/digital-skill-course-logo/'.$c_item) }}" alt="{{ $course->user_course_name }}-logo" class="img-fluid">
+                    </div>
+                    @endforeach
+                  @endforeach
                 </div>
                 <div class="founder-signature">
                   <img src="{{ url('frontend/digital-skill-certificate/founder-signature.png') }}" alt="" class="img-fluid">
