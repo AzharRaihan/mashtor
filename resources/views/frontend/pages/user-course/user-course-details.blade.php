@@ -360,18 +360,11 @@
           <div class="learned mt-4">
             <p class="text-uppercase">Skills {{ $user->fullname }} Learned</p>
             <div class="course-logo d-flex pt-3">
-              <a href="#" class="mx-2">
-                <img src="{{ url('uploads/course/html.png') }}" alt="" class="img-fluid">
-              </a>
-              <a href="#" class="mx-2">
-                <img src="{{ url('uploads/course/css.png') }}" alt="" class="img-fluid">
-              </a>
-              <a href="#" class="mx-2">
-                <img src="{{ url('uploads/course/bootstrap.png') }}" alt="" class="img-fluid">
-              </a>
-              <a href="#" class="mx-2">
-                <img src="{{ url('uploads/course/vscode.png') }}" alt="" class="img-fluid">
-              </a>
+              @foreach($user->course as $course)
+                @foreach (json_decode($course->course_image) as $c_item)
+                  <img src="{{ url('uploads/digital-skill-course-logo/'.$c_item) }}" alt="{{ $course->user_course_name }}-logo" class="img-fluid mr-2" width="60px" height="60px">
+                @endforeach
+              @endforeach
             </div>
           </div>
         </div>
@@ -429,6 +422,9 @@
                   </div>
                 </div>
                 <div class="trainer-signature">
+                  @foreach($user->course as $course)
+                    <img src="{{ url('uploads/digital-skill-course-logo/trainer-signature/'.$course->trainer_signature) }}" alt="" class="img-fluid" height="70px">
+                  @endforeach
                   <h5>Trainer Signature</h5>
                 </div>
               </div>
