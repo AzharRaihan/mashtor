@@ -339,15 +339,17 @@
             <span><i class="fas fa-star"></i></span>
           </div>
           <p>5/5 - Highly Recommended</p>
-          @if($user == $authUser)
-          <form action="{{ route('update.bio', $user->id) }}" method="POST" id="bio">
-            @csrf
-            <textarea name="bio" class="form-control" style="width: 100%;" rows="4">{{ $user->bio }}</textarea>
-            <small class="d-block">Max Character 255</small>
-            <button type="submit" class="btn btn-warning text-white btn-sm">Update Bio <i class="far fa-arrow-alt-circle-up"></i></button>
-          </form>
+          @if(Auth::user())
+            @if($user->id == $authUser->id)
+            <form action="{{ route('update.bio', $user->id) }}" method="POST" id="bio">
+              @csrf
+              <textarea name="bio" class="form-control" style="width: 100%;" rows="4">{{ $user->bio }}</textarea>
+              <small class="d-block">Max Character 255</small>
+              <button type="submit" class="btn btn-warning text-white btn-sm">Update Feedback <i class="far fa-arrow-alt-circle-up"></i></button>
+            </form>
+            @endif
           @else
-          <p>{{ $user->bio }}</p>
+            <p>{{ $user->bio }}</p>
           @endif
           <div class="d-flex mt-4">
             <a href="#" class="verified">
@@ -362,7 +364,7 @@
             <div class="course-logo d-flex pt-3">
               @foreach($user->course as $course)
                 @foreach (json_decode($course->course_image) as $c_item)
-                  <img src="{{ url('uploads/digital-skill-course-logo/'.$c_item) }}" alt="{{ $course->user_course_name }}-logo" class="img-fluid mr-2" width="60px" height="60px">
+                  <img src="{{ url('uploads/digital-skill-course-logo/'.$c_item) }}" alt="{{ $course->user_course_name }}-logo" class="mr-2" height="40px" width="40px">
                 @endforeach
               @endforeach
             </div>
@@ -401,7 +403,7 @@
                   @foreach($user->course as $course)
                     @foreach (json_decode($course->course_image) as $c_item)
                     <div class="course-logo"> 
-                      <img src="{{ url('uploads/digital-skill-course-logo/'.$c_item) }}" alt="{{ $course->user_course_name }}-logo" class="img-fluid">
+                      <img src="{{ url('uploads/digital-skill-course-logo/'.$c_item) }}" alt="{{ $course->user_course_name }}-logo" height="40px" width="40px">
                     </div>
                     @endforeach
                   @endforeach
@@ -423,7 +425,7 @@
                 </div>
                 <div class="trainer-signature">
                   @foreach($user->course as $course)
-                    <img src="{{ url('uploads/digital-skill-course-logo/trainer-signature/'.$course->trainer_signature) }}" alt="" class="img-fluid" height="70px">
+                    <img src="{{ url('uploads/digital-skill-course-logo/trainer-signature/'.$course->trainer_signature) }}" alt="trainer-signature" height="70px">
                   @endforeach
                   <h5>Trainer Signature</h5>
                 </div>
