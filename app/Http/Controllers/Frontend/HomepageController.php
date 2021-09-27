@@ -339,14 +339,22 @@ class HomepageController extends Controller
     // Users Course Info
     public function userCourseCategory($id)
     {
+        // For Category
         $user_course_categories = UserCourseCategory::findOrFail($id);
+        // For Category wise Course
         $user_course = Courseuser::where('user_course_category_id', $id)->get();
+
         $query = Courseuser::with('courseusers')->where('user_course_category_id', $id);
         $student_course = $query->latest()->get();
         $couserId = $query->pluck('id');
-        $usersID = DB::table('courseuser_user')->whereIn('courseuser_id',$couserId)->where('status', 0)->pluck('user_id')->unique();
+        $usersID = DB::table('courseuser_user')->whereIn('courseuser_id',$couserId)->where('status', 1)->pluck('user_id')->unique();
         $users = User::whereIn('id', $usersID)->get();
-        return view('frontend.pages.user-course.user-course-info', compact('user_course_categories', 'user_course','users'));
+
+        $usersID2 = DB::table('courseuser_user')->whereIn('courseuser_id',$couserId)->where('status', 0)->pluck('user_id')->unique();
+        $users2 = User::whereIn('id', $usersID2)->get();
+
+
+        return view('frontend.pages.user-course.user-course-info', compact('user_course_categories', 'user_course','users', 'users2'));
     }
 
     // Students Course Details Page

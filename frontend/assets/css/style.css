@@ -729,9 +729,9 @@ color: gray;
 .our-offering-title{
   margin-top: -33px;
   background: #B7302B;
-    color: #fff;
-    font-size: 24px;
-    padding: 10px;
+  color: #fff;
+  font-size: 24px;
+  padding: 10px;
 }
 
 .video-section-slider{
@@ -739,17 +739,17 @@ color: gray;
 }
 .play-anchor-home-slider{
   position: absolute;
-    left: 50%;
-    top: 50%;
-    text-align: center;
-    transform: translate(-50%, -50%);
+  left: 50%;
+  top: 50%;
+  text-align: center;
+  transform: translate(-50%, -50%);
 }
 .play-anchor-home-slider .play-icon{
   border: 2px solid orange;
-    border-radius: 100%;
-    padding: 10px 20px;
-    font-size: 30px;
-    color: orange;
+  border-radius: 100%;
+  padding: 10px 20px;
+  font-size: 30px;
+  color: orange;
 }
 
 .custom-modal-dailog{
@@ -757,8 +757,8 @@ color: gray;
 }
 
 .nav-pills .nav-link.active, .nav-pills .show>.nav-link{
-    color: white;
-    background-color: #FFB317;
+  color: white;
+  background-color: #FFB317;
 }
 
 .custom-dropdown-wallet{

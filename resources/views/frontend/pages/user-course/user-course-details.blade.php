@@ -57,7 +57,7 @@
   }
   .mashtor-logo1{
     padding-top: 70px;
-    margin-left: 100px;
+    margin-left: 25px;
   }
   .mashtor-logo1 img{
     width: 60px;
@@ -339,19 +339,17 @@
             <span><i class="fas fa-star"></i></span>
           </div>
           <p>5/5 - Highly Recommended</p>
-          @foreach($user->course as $course)
-            <p>{{ $course->user_course_name }}</p>
-          @endforeach
-          
-          @if($user == $authUser)
-          <form action="{{ route('update.bio', $user->id) }}" method="POST" id="bio">
-            @csrf
-            <textarea name="bio" class="form-control" style="width: 100%;" rows="4">{{ $user->bio }}</textarea>
-            <small class="d-block">Max Character 255</small>
-            <button type="submit" class="btn btn-warning text-white btn-sm">Update Bio <i class="far fa-arrow-alt-circle-up"></i></button>
-          </form>
+          @if(Auth::user())
+            @if($user->id == $authUser->id)
+            <form action="{{ route('update.bio', $user->id) }}" method="POST" id="bio">
+              @csrf
+              <textarea name="bio" class="form-control" style="width: 100%;" rows="4">{{ $user->bio }}</textarea>
+              <small class="d-block">Max Character 255</small>
+              <button type="submit" class="btn btn-warning text-white btn-sm">Update Feedback <i class="far fa-arrow-alt-circle-up"></i></button>
+            </form>
+            @endif
           @else
-          <p>{{ $user->bio }}</p>
+            <p>{{ $user->bio }}</p>
           @endif
           <div class="d-flex mt-4">
             <a href="#" class="verified">
@@ -364,18 +362,11 @@
           <div class="learned mt-4">
             <p class="text-uppercase">Skills {{ $user->fullname }} Learned</p>
             <div class="course-logo d-flex pt-3">
-              <a href="#" class="mx-2">
-                <img src="{{ url('uploads/course/html.png') }}" alt="" class="img-fluid">
-              </a>
-              <a href="#" class="mx-2">
-                <img src="{{ url('uploads/course/css.png') }}" alt="" class="img-fluid">
-              </a>
-              <a href="#" class="mx-2">
-                <img src="{{ url('uploads/course/bootstrap.png') }}" alt="" class="img-fluid">
-              </a>
-              <a href="#" class="mx-2">
-                <img src="{{ url('uploads/course/vscode.png') }}" alt="" class="img-fluid">
-              </a>
+              @foreach($user->course as $course)
+                @foreach (json_decode($course->course_image) as $c_item)
+                  <img src="{{ url('uploads/digital-skill-course-logo/'.$c_item) }}" alt="{{ $course->user_course_name }}-logo" class="mr-2" height="40px" width="40px">
+                @endforeach
+              @endforeach
             </div>
           </div>
         </div>
@@ -402,32 +393,20 @@
                 <div class="name-com-date">
                   <span>September 6,2021</span>
                   <h4 class="py-md-3 py-1 text-uppercase name">{{ $user->fullname }}</h4>
-                  <span>Has Successfully compleated a Mashtor workshop</span>
-                  <h4 class="py-md-3 py-1" style="color: #C2000C">Introducting To Codding</h4>
+                  <span>Has successfully completed a certificate course</span>
+                  @foreach($user->course as $course)
+                    <h4 class="py-md-3 py-1" style="color: #C2000C">{{ $course->user_course_name }}</h4>
+                  @endforeach
                 </div>
                 <!-- Set up your HTML -->
                 <div class="owl-carousel course-logo-wrap pt-3">
-                  <div class="course-logo"> 
-                    <img src="{{ url('uploads/course/html.png') }}" alt="" class="img-fluid">
-                  </div>
-                  <div class="course-logo"> 
-                    <img src="{{ url('uploads/course/css.png') }}" alt="" class="img-fluid">
-                  </div>
-                  <div class="course-logo"> 
-                    <img src="{{ url('uploads/course/bootstrap.png') }}" alt="" class="img-fluid">
-                  </div>
-                  <div class="course-logo"> 
-                    <img src="{{ url('uploads/course/vscode.png') }}" alt="" class="img-fluid">
-                  </div>
-                  <div class="course-logo"> 
-                    <img src="{{ url('uploads/course/html.png') }}" alt="" class="img-fluid">
-                  </div>
-                  <div class="course-logo"> 
-                    <img src="{{ url('uploads/course/css.png') }}" alt="" class="img-fluid">
-                  </div>
-                  <div class="course-logo"> 
-                    <img src="{{ url('uploads/course/bootstrap.png') }}" alt="" class="img-fluid">
-                  </div>
+                  @foreach($user->course as $course)
+                    @foreach (json_decode($course->course_image) as $c_item)
+                    <div class="course-logo"> 
+                      <img src="{{ url('uploads/digital-skill-course-logo/'.$c_item) }}" alt="{{ $course->user_course_name }}-logo" height="40px" width="40px">
+                    </div>
+                    @endforeach
+                  @endforeach
                 </div>
                 <div class="founder-signature">
                   <img src="{{ url('frontend/digital-skill-certificate/founder-signature.png') }}" alt="" class="img-fluid">
@@ -445,13 +424,16 @@
                   </div>
                 </div>
                 <div class="trainer-signature">
+                  @foreach($user->course as $course)
+                    <img src="{{ url('uploads/digital-skill-course-logo/trainer-signature/'.$course->trainer_signature) }}" alt="trainer-signature" height="70px">
+                  @endforeach
                   <h5>Trainer Signature</h5>
                 </div>
               </div>
             </div>
           </div>
         </div>
-          <button onclick="saveAs()" class="btn btn-warning text-white mt-5">Save As</button>
+          <!--<button onclick="saveAs()" class="btn btn-warning text-white mt-5">Save As</button>-->
         </div>
       </div>
 
