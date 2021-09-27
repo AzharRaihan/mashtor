@@ -332,6 +332,7 @@
                   <i class="fas fa-star text-warning"></i>
                   <i class="fas fa-star text-warning"></i>
                   <i class="fas fa-star text-warning"></i>
+                  <i class="fas fa-star text-warning"></i>
                 </div>
                 <div class="d-flex pt-2 rating">
                   <span>5</span>
