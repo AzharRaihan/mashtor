@@ -7,27 +7,27 @@
   padding:0;
 }
 @font-face {
-    font-family: AbrilFatface-Regular;
-    src: url("../fonts/WEB/AbrilFatface-Regular.ttf") format("truetype");
+  font-family: AbrilFatface-Regular;
+  src: url("../fonts/WEB/AbrilFatface-Regular.ttf") format("truetype");
 }
 
 @font-face {
-    font-family: AvenirNextLTPro-Demi;
-    src: url("../fonts/WEB/AvenirNextLTPro-Demi.otf") format("opentype");
+  font-family: AvenirNextLTPro-Demi;
+  src: url("../fonts/WEB/AvenirNextLTPro-Demi.otf") format("opentype");
 }
 
 @font-face {
-    font-family: AvenirNextLTPro-Regular;
-    src: url("../fonts/WEB/AvenirNextLTPro-Regular.otf") format("opentype");
+  font-family: AvenirNextLTPro-Regular;
+  src: url("../fonts/WEB/AvenirNextLTPro-Regular.otf") format("opentype");
 }
 
 @font-face {
-    font-family: AvenirNextLTPro-Medium;
-    src: url("../fonts/WEB/AvenirNextLTPro-Medium.otf") format("opentype");
+  font-family: AvenirNextLTPro-Medium;
+  src: url("../fonts/WEB/AvenirNextLTPro-Medium.otf") format("opentype");
 }
 
 body {
-    font-family: AbrilFatface-Regular,AvenirNextLTPro-Demi,AvenirNextLTPro-Regular;
+  font-family: AbrilFatface-Regular,AvenirNextLTPro-Demi,AvenirNextLTPro-Regular;
 }
 .clear{
   float:none;
