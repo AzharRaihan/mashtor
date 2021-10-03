@@ -16,7 +16,7 @@
                                 <label class="col-lg-2 control-label" for="name1"> Course </label>
                                 <div class="col-lg-10">
                                     <select name="course" id="" class="form-control">
-                                        <option>Select Course</option>
+                                        <option>Select Course 2</option>
                                         @foreach($course as $data)
                                         <?php
                                             $coursecatsdsd = DB::table('course_categories')->where('id',$data->course_cat)->first();
