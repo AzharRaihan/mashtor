@@ -92,6 +92,9 @@
     .projects-team{
       grid-template-columns: auto auto auto;
     }
+    .founder-signature img{
+      height: 60px;
+    }
   }
   @media only screen and (min-width: 577px) and (max-width: 767.99px) {
     .trainer{

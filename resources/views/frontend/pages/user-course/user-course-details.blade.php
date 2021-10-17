@@ -166,9 +166,14 @@
     letter-spacing: 2px;
     color: #FFB317;
   }
+  @media only screen and (min-width: 768px) and (max-width: 991px) {
+    #border-certificate {
+      max-width: 700px;
+    }
+  }
   @media only screen and (min-width: 576px) and (max-width: 767px) {
-    #border-certificate{
-      max-width: 460px;
+    #border-certificate {
+      max-width: 100%;
     }
     .badge2 {
       width: 172px;
@@ -233,12 +238,16 @@
     }
   }
   @media only screen and (min-width: 320px) and (max-width: 575px) {
-    #border-certificate{
-      max-width: 460px;
+    .student-avater img{
+      width: 170px;
+      height: 170px;
+    }
+    #border-certificate {
+      max-width: 100%;
     }
     .badge2 {
       width: 125px;
-      height: 225px;
+      height: 215px;
       padding-bottom: 15px;
     }
     .badge2-circle {
@@ -313,6 +322,9 @@
       border-color: #80bdff;
       outline: 0;
       box-shadow: none;
+    }
+    .trainer-signature img{
+      height: 30px;
     }
   }
 </style>
@@ -409,7 +421,7 @@
                   @endforeach
                 </div>
                 <div class="founder-signature">
-                  <img src="{{ url('frontend/digital-skill-certificate/founder-signature.png') }}" alt="" class="img-fluid">
+                  <img src="{{ url('frontend/digital-skill-certificate/founder-signature.png') }}" alt="">
                   <h5>Founder Signature</h5>
                 </div>
               </div>
@@ -425,7 +437,7 @@
                 </div>
                 <div class="trainer-signature">
                   @foreach($user->course as $course)
-                    <img src="{{ url('uploads/digital-skill-course-logo/trainer-signature/'.$course->trainer_signature) }}" alt="trainer-signature" height="70px">
+                    <img src="{{ url('uploads/digital-skill-course-logo/trainer-signature/'.$course->trainer_signature) }}" alt="trainer-signature">
                   @endforeach
                   <h5>Trainer Signature</h5>
                 </div>
