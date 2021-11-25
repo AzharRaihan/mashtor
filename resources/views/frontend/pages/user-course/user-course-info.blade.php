@@ -159,7 +159,7 @@
             <div class="row pt-3">
               <div class="col-6">
                 <div class="sponsored-by">
-                  <img src="{{ url('frontend/assets/supported-by/equals.png') }}" alt="" class="py-2 img-fluid">
+                  <img src="{{ url('frontend/assets/supported-by/e-skill.png') }}" alt="" class="py-2 img-fluid">
                   <img src="{{ url('frontend/assets/supported-by/giz.png') }}" alt="" class="py-2 img-fluid">
                 </div>
               </div>
@@ -167,6 +167,11 @@
                 <div class="sponsored-by">
                   <img src="{{ url('frontend/assets/supported-by/ctsc.png') }}" alt="" class="py-2 img-fluid">
                   <img src="{{ url('frontend/assets/supported-by/federal.jpg') }}" alt="" class="py-2 img-fluid">
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="sponsored-by">
+                  <img src="{{ url('frontend/assets/supported-by/equals.png') }}" alt="" class="py-2 img-fluid">
                 </div>
               </div>
             </div>
@@ -190,7 +195,7 @@
             <div class="row pt-3">
               <div class="col-6">
                 <div class="sponsored-by">
-                  <img src="{{ url('frontend/assets/supported-by/equals.png') }}" alt="" class="py-2 img-fluid">
+                  <img src="{{ url('frontend/assets/supported-by/e-skill.png') }}" alt="" class="py-2 img-fluid">
                   <img src="{{ url('frontend/assets/supported-by/giz.png') }}" alt="" class="py-2 img-fluid">
                 </div>
               </div>
@@ -198,6 +203,12 @@
                 <div class="sponsored-by">
                   <img src="{{ url('frontend/assets/supported-by/ctsc.png') }}" alt="" class="py-2 img-fluid">
                   <img src="{{ url('frontend/assets/supported-by/federal.jpg') }}" alt="" class="py-2 img-fluid">
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="sponsored-by">
+                  <img src="{{ url('frontend/assets/supported-by/equals.png') }}" alt="" class="py-2 img-fluid">
+
                 </div>
               </div>
             </div>
